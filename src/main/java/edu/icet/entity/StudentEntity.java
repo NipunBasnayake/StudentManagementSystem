@@ -1,4 +1,4 @@
-package edu.icet.crn.entity;
+package edu.icet.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

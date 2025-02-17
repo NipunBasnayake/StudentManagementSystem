@@ -1,4 +1,4 @@
-package edu.icet.crn.dto;
+package edu.icet.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
-package edu.icet.crn.controller;
+package edu.icet.controller;
 
-import edu.icet.crn.dto.Student;
-import edu.icet.crn.service.StudentService;
+import edu.icet.dto.Student;
+import edu.icet.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/student")
 @RequiredArgsConstructor
+@CrossOrigin
 public class StudentController {
 
     final StudentService service;
@@ -32,5 +33,25 @@ public class StudentController {
     @PutMapping("/update")
     public void updateStudent(@RequestBody Student student) {
         service.updateStudent(student);
+    }
+
+    @GetMapping("/searchById/{id}")
+    public Student searchById(@PathVariable Integer id) {
+        return service.searchById(id);
+    }
+
+    @GetMapping("searchByName/{name}")
+    public List<Student> searchByName(@PathVariable String name) {
+        return service.findByName(name);
+    }
+
+    @GetMapping("searchByAddress/{address}")
+    public List<Student> searchByAddress(@PathVariable String address) {
+        return service.findByAddress(address);
+    }
+
+    @GetMapping("searchByAge/{age}")
+    public List<Student> searchByAge(@PathVariable Integer age) {
+        return service.findByAge(age);
     }
 }

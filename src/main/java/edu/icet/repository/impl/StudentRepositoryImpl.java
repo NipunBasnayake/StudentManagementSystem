@@ -1,4 +1,4 @@
-package edu.icet.crn.repository.impl;
+package edu.icet.repository.impl;
 
 public class StudentRepositoryImpl {
 }

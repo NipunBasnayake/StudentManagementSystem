@@ -28,15 +28,18 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> getStudents() {
         ArrayList<Student> studentArrayList = new ArrayList<>();
         List<StudentEntity> studentEntities = repository.findAll();
-        studentEntities.forEach(studentEntity -> {
-            studentArrayList.add(modelMapper.map(studentEntity, Student.class));
-        });
+        studentEntities.forEach(studentEntity -> studentArrayList.add(modelMapper.map(studentEntity, Student.class)));
         return studentArrayList;
     }
 
     @Override
     public void deleteStudent(Integer id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public void updateStudent(Student student) {
+        repository.save(modelMapper.map(student, StudentEntity.class));
     }
 
 

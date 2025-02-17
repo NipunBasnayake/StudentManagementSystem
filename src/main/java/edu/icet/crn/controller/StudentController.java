@@ -3,10 +3,9 @@ package edu.icet.crn.controller;
 import edu.icet.crn.dto.Student;
 import edu.icet.crn.service.StudentService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
@@ -17,8 +16,16 @@ public class StudentController {
 
     @PostMapping("/add")
     public void addStudent(@RequestBody Student student) {
-        System.out.println(student);
         service.addStudent(student);
     }
 
+    @GetMapping("/students")
+    public List<Student> getStudents() {
+        return service.getStudents();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteStudent(@PathVariable Integer id) {
+        service.deleteStudent(id);
+    }
 }
